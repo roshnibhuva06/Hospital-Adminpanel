@@ -1,0 +1,154 @@
+/* Page Background */
+.verify-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #F4FAFF;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Card */
+.verify-card {
+  width: 350px;
+  padding: 35px;
+  border-radius: 20px;
+  background: #FFFFFF;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  color: #3A4F66;
+}
+
+/* Heading */
+.verify-card h2 {
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+/* Input Wrapper */
+.verify-field {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.verify-field label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+  color: #3A4F66;
+}
+
+/* Email Input */
+.verify-field input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #A7C7E7;
+  outline: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.verify-field input:focus {
+  border-color: #BEE7E8;
+  box-shadow: 0 0 6px rgba(190, 231, 232, 0.6);
+}
+
+/* OTP Container */
+.otp-box-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* OTP Boxes */
+.otp-box {
+  width: 45px;
+  height: 50px;
+  border-radius: 12px;
+  border: 1px solid #A7C7E7;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #3A4F66;
+  background: #F4FAFF;
+  transition: 0.3s;
+}
+
+.otp-box:focus {
+  border-color: #BEE7E8;
+  background: #FFFFFF;
+  transform: scale(1.05);
+}
+
+/* Button */
+.verify-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: #A7C7E7;
+  color: #3A4F66;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.verify-btn:hover {
+  background: #BEE7E8;
+}
+
+/* Floating Toast */
+.toast {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  min-width: 200px;
+  animation: slideIn 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Toast Success */
+.toast.success {
+  background: #BEE7E8;
+  color: #3A4F66;
+}
+
+/* Toast Error */
+.toast.error {
+  background: #FFD6D6;
+  color: #3A4F66;
+}
+
+/* Animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+  .verify-card {
+    width: 90%;
+  }
+
+  .otp-box {
+    width: 38px;
+    height: 45px;
+  }
+
+  .toast {
+    right: 15px;
+    bottom: 15px;
+  }
+}

@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ================= PAGE BACKGROUND ================= */
+
+.signup-page,
+.signin-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e6f2ff, #f9fcff);
+  padding: 20px;
+}
+
+/* ================= MAIN WRAPPER ================= */
+
+.signup-wrapper,
+.signin-wrapper {
+  width: 950px;
+  max-width: 100%;
+  background: #ffffff;
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ================= LEFT PANEL ================= */
+
+.welcome-panel {
+  flex: 1;
+  background: linear-gradient(135deg, #0077b6, #0096c7);
+  color: white;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  background: white;
+  color: #0077b6;
+  font-weight: 600;
+  font-size: 22px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.welcome-panel h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.welcome-panel p {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* ================= RIGHT PANEL ================= */
+
+.form-panel {
+  flex: 1;
+  padding: 50px 40px;
+}
+
+.form-panel h2 {
+  margin-bottom: 10px;
+  color: #023e8a;
+}
+
+.subtext {
+  font-size: 14px;
+  margin-bottom: 25px;
+  color: #6c757d;
+}
+
+.subtext span {
+  color: #0077b6;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.subtext span:hover {
+  text-decoration: underline;
+}
+
+/* ================= INPUT FIELDS ================= */
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: block;
+  color: #333;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.form-field input:focus {
+  border-color: #0077b6;
+  outline: none;
+  box-shadow: 0 0 6px rgba(0, 119, 182, 0.25);
+}
+
+/* ================= BUTTON ================= */
+
+.signin-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0077b6, #0096c7);
+  color: white;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.signin-btn:hover {
+  background: linear-gradient(135deg, #023e8a, #0077b6);
+  transform: translateY(-2px);
+}
+
+/* ================= TOAST ================= */
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: white;
+  animation: fadeIn 0.4s ease;
+  z-index: 1000;
+}
+
+.toast.success {
+  background: #2ecc71;
+}
+
+.toast.error {
+  background: #e74c3c;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .signup-wrapper,
+  .signin-wrapper {
+    flex-direction: column;
+  }
+
+  .welcome-panel {
+    text-align: center;
+    padding: 30px;
+  }
+
+  .form-panel {
+    padding: 30px;
+  }
+}
