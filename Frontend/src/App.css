@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 * {
@@ -32,17 +33,48 @@
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
 }
 
-/* ================= LEFT PANEL ================= */
+
 
 .welcome-panel {
   flex: 1;
   background: linear-gradient(135deg, #0077b6, #0096c7);
   color: white;
   padding: 50px 40px;
+
+}
+.signin-page,
+.signup-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #e3f2fd, #ffffff);
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Wrapper */
+.signin-wrapper,
+.signup-wrapper {
+  width: 900px;
+  display: flex;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* LEFT PANEL */
+.welcome-panel {
+  width: 45%;
+  background: linear-gradient(135deg, #1e88e5, #42a5f5);
+  color: white;
+  padding: 40px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 
 .logo {
   width: 60px;
@@ -60,6 +92,23 @@
 
 .welcome-panel h1 {
   font-size: 24px;
+}
+.logo {
+  width: 70px;
+  height: 70px;
+  background: white;
+  color: #1e88e5;
+  font-weight: bold;
+  font-size: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.welcome-panel h1 {
+
   margin-bottom: 15px;
 }
 
@@ -101,6 +150,25 @@
 
 .form-field {
   margin-bottom: 20px;
+
+  color: #333;
+}
+
+.subtext {
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.subtext span {
+  color: #1e88e5;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Form Fields */
+.form-field {
+  margin-bottom: 18px;
+
 }
 
 .form-field label {

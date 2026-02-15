@@ -1,6 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
-
 import Signup from "./dashboard/Signup.jsx";
 import Signin from "./dashboard/Signin.jsx";
 import VerifyOtp from "./dashboard/VerifyOtp.jsx";
