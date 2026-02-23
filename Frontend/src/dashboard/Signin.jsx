@@ -11,7 +11,7 @@ export default function SignIn() {
 
   const handleSignin = async () => {
     try {
-      const res = await axios.post(`${base_uri}/signin`, {
+      const res = await axios.post(`${base_uri}/auth/signin`, {
         email,
         password
       });

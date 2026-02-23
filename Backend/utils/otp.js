@@ -6,15 +6,14 @@ dotenv.config();
 const transport = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.EMAIL,   // must match .env
-    pass: process.env.PASS,    // must be GOOGLE APP PASSWORD
+    user: process.env.EMAIL,   
+    pass: process.env.PASS,    
   },
   tls: {
     rejectUnauthorized: false,
   },
 });
 
-// transporter verify (IMPORTANT)
 transport.verify(function (error, success) {
   if (error) {
     console.log("❌ Mail Server Error:", error.message);

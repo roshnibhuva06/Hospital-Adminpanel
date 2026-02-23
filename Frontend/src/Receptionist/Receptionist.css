@@ -1,0 +1,41 @@
+.main-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f6f9;
+}
+
+h1 {
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.btn-container {
+  display: flex;
+  gap: 20px;
+}
+
+.btn {
+  padding: 12px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.doctor-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.receptionist-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}

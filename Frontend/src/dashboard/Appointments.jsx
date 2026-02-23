@@ -27,7 +27,6 @@ export default function Appointment() {
     status: "Pending"
   });
 
-  /* ================= ADD ================= */
   const addAppointment = () => {
     const newAppointment = {
       id: appointments.length + 1,

@@ -4,7 +4,6 @@ import "../css/homepage.css";
 
 export default function Dashboard({ patients = [] }) {
 
-  // Last 3 Patients
   const lastPatients = patients.slice(-3).reverse();
 
   return (

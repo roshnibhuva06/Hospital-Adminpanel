@@ -1,6 +1,5 @@
 import Billing from "../models/billingModel.js";
 
-/* ===== Create Bill ===== */
 export const createBill = async (req, res) => {
   try {
     const bill = await Billing.create(req.body);
@@ -19,7 +18,7 @@ export const createBill = async (req, res) => {
   }
 };
 
-/* ===== Get All Bills ===== */
+
 export const getBills = async (req, res) => {
   try {
     const bills = await Billing.find().sort({ createdAt: -1 });
@@ -37,7 +36,7 @@ export const getBills = async (req, res) => {
   }
 };
 
-/* ===== Update Bill ===== */
+
 export const updateBill = async (req, res) => {
   try {
     const bill = await Billing.findByIdAndUpdate(
@@ -60,7 +59,6 @@ export const updateBill = async (req, res) => {
   }
 };
 
-/* ===== Delete Bill ===== */
 export const deleteBill = async (req, res) => {
   try {
     await Billing.findByIdAndDelete(req.params.id);

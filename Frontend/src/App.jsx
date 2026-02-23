@@ -8,6 +8,7 @@ import Doctor from "./dashboard/doctor.jsx";
 import Patients from "./dashboard/Patients.jsx";
 import Appointments from "./dashboard/Appointments.jsx";
 import Billing from "./dashboard/billing.jsx";
+import Receptionist from "./Receptionist/Receptionist.jsx";
 
 import "./App.css";
 
@@ -27,6 +28,7 @@ function App() {
       <Route path="/verify-otp" element={<VerifyOtp />} />
       <Route path="/homepage" element={<Homepage />} />
       <Route path="/doctors" element={<Doctor />} />
+      <Route path="/receptionist" element={<Receptionist />} />
 
       {/* ✅ PATIENTS WITH PROPS */}
       <Route 

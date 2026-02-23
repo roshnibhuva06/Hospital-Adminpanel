@@ -1,6 +1,6 @@
-import Patient from "../models/patientModel.js";
+import Patient from "../models/patientsModel.js";
 
-/* ===== GET ALL PATIENTS ===== */
+// ===== GET ALL PATIENTS ===== 
 export const getPatients = async (req, res) => {
   try {
     const patients = await Patient.find();
@@ -10,7 +10,7 @@ export const getPatients = async (req, res) => {
   }
 };
 
-/* ===== ADD PATIENT ===== */
+// ===== ADD PATIENT ===== 
 export const addPatient = async (req, res) => {
 
   try {

@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -43,7 +44,7 @@ export default function VerifyOtp() {
     }
 
     try {
-      const res = await axios.post(`${base_uri}/verifyOtp`, {
+      const res = await axios.post(`${base_uri}/auth/verifyOtp`, {
         email,
         otp,
       });

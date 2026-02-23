@@ -1,6 +1,7 @@
+
 import React, { useState } from "react";
 import axios from "axios";
- import { base_uri } from "../api/api.js";
+import { base_uri } from "../api/api.js";
 import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
@@ -11,10 +12,11 @@ export default function SignUp() {
 
   const handleSignup = async () => {
     try {
-      const res = await axios.post(`${base_uri}/signup`, {
-        email,
-        password
-      });
+      const res = await axios.post(
+        `${base_uri}/auth/signup`,
+        { email, password }, // data
+        { withCredentials: true } // config (optional)
+      );
 
       if (res.data.status === true || res.data.message) {
         setToast({
@@ -49,7 +51,7 @@ export default function SignUp() {
   return (
     <div className="signup-page">
       <div className="signup-wrapper">
-        
+
         <div className="welcome-panel">
           <div className="logo">HC</div>
 

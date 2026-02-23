@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../css/patients.css";
+import { base_uri } from "../api/api.js";
 
-export default function Patients({ patients = [], setPatients }) {
-
+export default function Patients() {
+  const [patients, setPatients] = useState([]);
   const [search, setSearch] = useState("");
   const [selectedPatient, setSelectedPatient] = useState(null);
   const [editPatient, setEditPatient] = useState(null);
@@ -15,55 +17,73 @@ export default function Patients({ patients = [], setPatients }) {
     phone: ""
   });
 
-  /* ===== ADD ===== */
-  const saveNewPatient = () => {
+  const fetchPatients = async () => {
+    try {
+      const res = await axios.get(`${base_uri}/patients`);
+      setPatients(res.data);
+    } catch (err) {
+      console.error("Error fetching patients:", err);
+    }
+  };
 
+  useEffect(() => {
+    fetchPatients();
+  }, []);
+
+
+  const saveNewPatient = async () => {
     if (!newPatient.name.trim() || !newPatient.age) {
       alert("Please fill required fields");
       return;
     }
 
-    const patient = {
-      id: Date.now(),
-      ...newPatient
-    };
-
-    setPatients(prev => [...prev, patient]);
-
-    setNewPatient({
-      name: "",
-      age: "",
-      disease: "",
-      phone: ""
-    });
-
-    setAddPatientModal(false);
+    try {
+      const res = await axios.post(`${base_uri}/patients`, newPatient);
+      setPatients(prev => [...prev, res.data]);
+      setNewPatient({ name: "", age: "", disease: "", phone: "" });
+      setAddPatientModal(false);
+    } catch (err) {
+      console.error("Error adding patient:", err);
+    }
   };
 
-  /* ===== DELETE ===== */
-  const deletePatient = (id) => {
-    setPatients(prev => prev.filter(p => p.id !== id));
+
+  const deletePatient = async (id) => {
+    try {
+      await axios.delete(`${base_uri}/patients/${id}`);
+      setPatients(prev => prev.filter(p => p._id !== id));
+    } catch (err) {
+      console.error("Error deleting patient:", err);
+    }
   };
 
-  /* ===== EDIT SAVE ===== */
-  const saveEdit = () => {
+
+  const saveEdit = async () => {
     if (!editPatient) return;
 
-    setPatients(prev =>
-      prev.map(p => p.id === editPatient.id ? editPatient : p)
-    );
+    try {
+      const res = await axios.put(
+        `${base_uri}/patients/${editPatient._id}`,
+        editPatient
+      );
 
-    setEditPatient(null);
+      setPatients(prev =>
+        prev.map(p => (p._id === editPatient._id ? res.data : p))
+      );
+
+      setEditPatient(null);
+    } catch (err) {
+      console.error("Error updating patient:", err);
+    }
   };
 
-  /* ===== SEARCH ===== */
+
   const filteredPatients = patients.filter(p =>
     p.name?.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
     <div className="patient-page">
-
       <div className="patient-header">
         <h2>Patients Management</h2>
         <button className="add-btn" onClick={() => setAddPatientModal(true)}>
@@ -90,20 +110,25 @@ export default function Patients({ patients = [], setPatients }) {
             <th>Actions</th>
           </tr>
         </thead>
-
         <tbody>
           {filteredPatients.length > 0 ? (
-            filteredPatients.map((patient) => (
-              <tr key={patient.id}>
-                <td>{patient.id}</td>
+            filteredPatients.map((patient, index) => (
+              <tr key={patient._id}>
+                <td>{index + 1}</td>
                 <td>{patient.name}</td>
                 <td>{patient.age}</td>
                 <td>{patient.disease}</td>
                 <td>{patient.phone}</td>
                 <td>
-                  <button onClick={() => setSelectedPatient(patient)}>View</button>
-                  <button onClick={() => setEditPatient(patient)}>Edit</button>
-                  <button onClick={() => deletePatient(patient.id)}>Delete</button>
+                  <button onClick={() => setSelectedPatient(patient)}>
+                    View
+                  </button>
+                  <button onClick={() => setEditPatient(patient)}>
+                    Edit
+                  </button>
+                  <button onClick={() => deletePatient(patient._id)}>
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))
@@ -162,11 +187,12 @@ export default function Patients({ patients = [], setPatients }) {
         </div>
       )}
 
-      {/* VIEW */}
+      {/* VIEW MODAL */}
       {selectedPatient && (
         <div className="modal">
           <div className="modal-content">
             <h3>Patient Details</h3>
+            <p><b>ID:</b> {selectedPatient._id}</p>
             <p><b>Name:</b> {selectedPatient.name}</p>
             <p><b>Age:</b> {selectedPatient.age}</p>
             <p><b>Disease:</b> {selectedPatient.disease}</p>
@@ -176,7 +202,7 @@ export default function Patients({ patients = [], setPatients }) {
         </div>
       )}
 
-      {/* EDIT */}
+      {/* EDIT MODAL */}
       {editPatient && (
         <div className="modal">
           <div className="modal-content">
@@ -216,7 +242,6 @@ export default function Patients({ patients = [], setPatients }) {
           </div>
         </div>
       )}
-
     </div>
   );
 }

@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { sendOTP } from "../utils/otp.js";
 
-// ================= SIGNUP =================
+
 export const signup = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -37,7 +37,7 @@ export const signup = async (req, res) => {
       message: "Signup successful",
     });
   } catch (error) {
-    console.log("Signup Error =>", error); // 👈 Terminal me show karega
+    console.log("Signup Error =>", error); 
 
     res.status(500).json({
       status: false,
@@ -47,7 +47,7 @@ export const signup = async (req, res) => {
   }
 };
 
-// ================= SIGNIN =================
+
 export const signin = async (req, res) => {
   const { email, password } = req.body;
 
@@ -76,7 +76,7 @@ export const signin = async (req, res) => {
   }
 };
 
-// ================= VERIFY OTP =================
+
 export const verifyOtp = async (req, res) => {
   const { email, otp } = req.body;
 
@@ -116,7 +116,6 @@ export const verifyOtp = async (req, res) => {
   }
 };
 
-// ================= CHANGE PASSWORD =================
 export const changePassword = async (req, res) => {
   const { email, oldPassword, newPassword } = req.body;
 
@@ -147,7 +146,6 @@ export const changePassword = async (req, res) => {
   }
 };
 
-// ================= FORGOT PASSWORD =================
 export const forgotPassword = async (req, res) => {
   const { email } = req.body;
 
@@ -173,7 +171,7 @@ export const forgotPassword = async (req, res) => {
   }
 };
 
-// ================= CHANGE FORGOT PASSWORD =================
+
 export const changeForgotPassword = async (req, res) => {
   const { email, password, otp } = req.body;
 
@@ -202,13 +200,12 @@ export const changeForgotPassword = async (req, res) => {
   }
 };
 
-// ================= LOGOUT =================
+
 export const logout = async (req, res) => {
   res.clearCookie("authToken");
   res.json({ status: true, message: "Logout successful" });
 };
 
-// ================= CHECK LOGIN STATUS =================
 export const checkLoginStatus = async (req, res) => {
   try {
     const token = req.cookies.authToken;

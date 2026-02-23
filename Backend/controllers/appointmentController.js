@@ -1,7 +1,6 @@
 import Appointment from "../models/appointmentModel.js";
 
 
-// ================= ADD =================
 export const createAppointment = async (req, res) => {
   try {
     const appointment = await Appointment.create(req.body);
@@ -11,8 +10,6 @@ export const createAppointment = async (req, res) => {
   }
 };
 
-
-// ================= GET ALL =================
 export const getAppointments = async (req, res) => {
   try {
     const data = await Appointment.find();
@@ -22,8 +19,6 @@ export const getAppointments = async (req, res) => {
   }
 };
 
-
-// ================= GET SINGLE =================
 export const getSingleAppointment = async (req, res) => {
   try {
     const data = await Appointment.findById(req.params.id);
@@ -34,7 +29,6 @@ export const getSingleAppointment = async (req, res) => {
 };
 
 
-// ================= UPDATE =================
 export const updateAppointment = async (req, res) => {
   try {
     const data = await Appointment.findByIdAndUpdate(
@@ -50,7 +44,6 @@ export const updateAppointment = async (req, res) => {
 };
 
 
-// ================= DELETE =================
 export const deleteAppointment = async (req, res) => {
   try {
     await Appointment.findByIdAndDelete(req.params.id);
